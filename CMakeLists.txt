@@ -4,16 +4,17 @@ cmake_minimum_required(VERSION 3.21.3)
 project(myProgram VERSION 0.1.0)
 
 add_executable(myProgram 
-main.cpp
+helloworld.cc
+main.cc
 )
 
 # FIND PACKAGE INSTALLED ON OS
 find_package(PkgConfig)
 if (PKG_CONFIG_FOUND)
-  pkg_check_modules(GIOMM "giomm-2.4")
-  if (GIOMM_FOUND)    
-    target_link_libraries(myProgram ${GIOMM_LIBRARIES})
-    add_definitions(${GIOMM_CFLAGS} ${GIOMM_CFLAGS_OTHER})
+  pkg_check_modules(GTK "gtkmm-4.0")
+  if (GTK_FOUND)    
+    target_link_libraries(myProgram ${GTK_LIBRARIES})
+    add_definitions(${GTK_CFLAGS} ${GTK_CFLAGS_OTHER})
   endif()
 endif()
 
